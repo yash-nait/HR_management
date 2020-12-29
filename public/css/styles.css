@@ -1,8 +1,11 @@
 body {
   margin: 0;
   font-family: sans-serif;
-  position: relative;
   overflow-x: hidden;
+}
+
+hr {
+  margin: 40px 50px 0;
 }
 
 /* NAVBAR STYLES START */
@@ -22,14 +25,14 @@ body {
 }
 
 .navbar li {
-  display: inline;
+  /* display: inline; */
   float: right;
   font-size: 20px;
   text-align: center;
 }
 
 #navbar-title {
-  display: inline;
+  /* display: inline; */
   float: left;
   /* font-size: 24px; */
 }
@@ -43,6 +46,21 @@ body {
 }
 
 /* NAVBAR STYLES END */
+
+/* BUTTONS */
+.bttn {
+  width: 100px;
+  height: 50px;
+  background-color: lightgreen;
+  border: none;
+  border: 2px solid black;
+  border-radius: 8px;
+  margin: 5px;
+}
+/*BUTTONS END*/
+
+/*---CSS specific to team page---*/
+
 /* CARD STYLES START */
 .card {
   display: inline-block;
@@ -68,9 +86,9 @@ body {
   margin-left: 150px;
   /* background-color: lightcoral; */
 }
-
 /* CARD STYLES END */
-/* HEADINGS STYLE */
+
+/* HEADINGS STYLE START*/
 .headings-profile {
   margin: 40px 50px 0;
 }
@@ -79,37 +97,19 @@ body {
   text-align: center;
   margin: 40px;
 }
-
-/* BUTTONS */
-.bttn {
-  background-color: lightgreen;
-  border: none;
-  border: 2px solid black;
-  border-radius: 8px;
-  margin: 5px;
-}
-
-.bttn-lg {
-  width: 100px;
-  height: 50px;
-}
+/* HEADINGS STYLE END*/
 
 .button-card {
   margin-left: 42%;
 }
 
-hr {
-  margin: 40px 50px 0;
-}
+/*---CSS specific to team page END---*/
 
-/* temp CSS */
+/*---CSS specific to emp_query page---*/
+
 .top {
   text-align: center;
   justify-content: space-around;
-}
-
-.q-btn {
-  padding: 10px 20px;
 }
 
 .q-section {
@@ -118,12 +118,19 @@ hr {
   margin: 10px;
 }
 
+.q-btn {
+  padding: 10px 20px;
+}
+
 .sbmt-btn {
   padding: 10px 20px;
   margin-left: 45vw;
 }
 
-/* PROFILE  */
+/*---CSS specific to emp_query page END---*/
+
+/*---CSS specific to profile page---*/
+
 .profile-bar {
   width: 100vw;
   height: 50vh;
@@ -143,20 +150,18 @@ hr {
   font-weight: bold;
 }
 
-.log-out {
+.log-out-bttn {
   padding: 10px 20px;
   float: right;
   margin: 10px;
 }
 
-/* temp 2 css */
+/*---CSS specific to profile page END---*/
+
+/*---CSS specific to sign_up page---*/
+
 .sign-up {
-  position: absolute;
-  margin: auto;
-  top: 100px;
-  right: 0;
   text-align: center;
-  left: 0;
   width: 350px;
   /* height: 400px; */
   padding: 20px;
@@ -164,4 +169,17 @@ hr {
   align-items: center;
   justify-content: center;
   background-color: gray;
+  margin: 15vh auto;
 }
+
+/*---CSS specific to sign_up page END---*/
+
+/* CSS for footer */
+
+.footer{
+  background-color: gray;
+  padding: 10px 0;
+  text-align: center;
+}
+
+/* CSS for footer */
