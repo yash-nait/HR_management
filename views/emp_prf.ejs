@@ -1,0 +1,32 @@
+<%- include("partials/header") -%>
+
+<div class="emp-profile">
+    <img ALIGN = "left" 
+    id="prf-img"  
+    alt="profile" 
+    width="300"
+    height="300"
+    >
+
+    <ul class="detail">
+        <li>Name : <%= obj.name %> </li>
+        <br><br>
+        <li>Employee ID : <%= obj.emp_id %>  </li>
+        <br><br>
+        <li>Designation : <%= obj.post %> </li>
+        <br><br>
+        <li>Salary : <%= obj.salary %> </li>
+        <br><br>
+        <li>Date of join : <%= obj.doj %> </li>
+        <br><br>
+        <li>Date of birth : <%= obj.dob %> </li>
+        <br><br>
+        <li>Phone Number : <%= obj.phone %> </li>
+        <br><br>
+        <li>Email : <%= obj.email %> </li>
+        <br><br>
+        <li>Address : <%= obj.address %> </li>
+    </ul>
+</div>
+
+<%- include("partials/footer") -%>

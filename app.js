@@ -8,25 +8,39 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
-// mongoose.connect('mongodb://localhost/employee', {useNewUrlParser: true, useUnifiedTopology: true});
-//
-// const employeeSchema = new mongoose.Schema({
-//   name: String,
-//   post: String,
-//   contact: String,
-//   email: String
-// })
-//
-// const Employee = mongoose.model("Employee", employeeSchema);
-//
-// const newEmployee = new Employee({
-//   name: 'Shivam',
-//   post: 'Admin',
-//   contact: '123455',
-//   email: 'abc@xyz.com'
-// });
-//
-// newEmployee.save();
+mongoose.connect("mongodb://localhost:27017/employee", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+const employeeSchema = {
+  name: String,
+  emp_id:String,
+  post: String,
+  phone: String,
+  email: String,
+  salary: String,
+  address: String,
+  doj: String,
+  dob: String
+
+};
+
+const Employee = mongoose.model("Employee", employeeSchema);
+
+const newEmployee = new Employee({
+  name: 'Shivam',
+  emp_id:'1234',
+  post: 'Admin',
+  phone: '123455',
+  email: 'abc@xyz.com',
+  salary: '10',
+  address:'Janakpuri',
+  doj:'11/08/2000',
+  dob:'11/08/1990'
+});
+
+newEmployee.save();
 
 app.listen(3000, function () {
     console.log("Server is running on port 3000.");
@@ -43,10 +57,25 @@ app.listen(3000, function () {
   app.get("/profile",function(req,res){
     res.render("profile");
   });
-  app.get("/signup",function(req,res){
-    res.render("sign_up");
+  app.get("/signin",function(req,res){
+    res.render("sign_in");
   });
   app.get("/reg",function(req,res){
     res.render("register");
   });
-// mongoose.connection.close();
+  
+  app.get("/emp_prf/:emp_id",function(req,res){
+    const id = req.params.emp_id;
+
+    Employee.findOne({emp_id: id }, function (err,obj) {
+      
+      if(err) {
+        console.log("Not found");
+      }
+      else {        
+        res.render("emp_prf",{obj});
+      }
+    })
+  });
+
+

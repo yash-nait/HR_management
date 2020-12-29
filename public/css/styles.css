@@ -2,16 +2,19 @@ body {
   margin: 0;
   font-family: sans-serif;
   overflow-x: hidden;
+  background-color: #f9f7f7;
+  font-family: 'Overpass Mono', monospace;;
 }
 
 hr {
   margin: 40px 50px 0;
+  color: #bbbbbb;
 }
 
 /* NAVBAR STYLES START */
 .navbar {
   width: 99vw;
-  background-color: #606060;
+  background-color: #112d4e;
   color: white;
 }
 
@@ -51,17 +54,23 @@ hr {
 .bttn {
   width: 100px;
   height: 50px;
-  background-color: lightgreen;
+  background-color: #06162A;
   border: none;
   border: 2px solid black;
   border-radius: 8px;
+  color: white;
   margin: 5px;
+}
+
+.bttn:hover{
+  background-color: #213E5F;
 }
 /*BUTTONS END*/
 
 /*---CSS specific to home page---*/
 
 .home_text{
+  font-family: 'Volkhov', serif;
   font-weight: bold;
   font-size: 3vw;
   margin: 20vh auto;
@@ -74,14 +83,11 @@ hr {
 }
 
 .link-bttn{
-  font-size: 2vw;
-  font-weight: bolder;
+  font-size: 2.75vw;
+  font-weight: 600;
   height: 30vh;
   width: 35vw;
-}
-
-.link-bttn:hover{
-  background-color: white;
+  font-family: 'Overpass Mono', monospace;
 }
 
 /*---CSS specific to home page END---*/
@@ -93,8 +99,9 @@ hr {
   display: inline-block;
   width: 650px;
   /* height: 100px; */
-  background-color: #646464;
+  background-color: #dbe2ef;
   margin: 40px 50px;
+  border-radius: 10px;
 }
 
 .card-image {
@@ -118,11 +125,25 @@ hr {
 /* HEADINGS STYLE START*/
 .headings-profile {
   margin: 40px 50px 0;
+  font-family: 'Volkhov', serif;
+  font-weight: bold;
 }
 
 .page-heading {
   text-align: center;
+  font-size: 40px;
   margin: 40px;
+  margin-bottom: 0;
+  font-family: 'Volkhov', serif;
+  font-weight: bold;
+}
+
+.page-subheading{
+  text-align: center;
+  font-size: 16px;
+  margin: 0;
+  font-family: 'Volkhov', serif;
+  font-weight: bold;
 }
 /* HEADINGS STYLE END*/
 
@@ -159,16 +180,14 @@ hr {
 /*---CSS specific to profile page---*/
 
 .profile-bar {
-  width: 100vw;
-  height: 50vh;
+  width: 99vw;
 }
 
 .profile-bar ul {
   list-style-type: none;
   margin: 0;
   padding: 20px;
-  background-color: blue;
-  border-radius: 20px;
+  background-color: #dbe2ef;
 }
 
 .profile-bar li {
@@ -183,11 +202,40 @@ hr {
   margin: 10px;
 }
 
+.db{
+  margin: 50px 0;
+}
+
+.database-operations{
+  text-align: center;
+}
+
+.profile-heading{
+  text-align: center;
+  font-family: 'Volkhov', serif;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.db-operations-styles{
+  height: 300px;
+  width: 100vw;
+  background-color: #dbe2ef;
+  margin: 50px 0;
+}
+
+.request-box{
+  height: 300px;
+  width: 100vw;
+  background-color: #dbe2ef;
+  margin: 50px 0;
+}
+
 /*---CSS specific to profile page END---*/
 
-/*---CSS specific to sign_up page---*/
+/*---CSS specific to sign_in page---*/
 
-.sign-up {
+.sign-in {
   text-align: center;
   width: 350px;
   /* height: 400px; */
@@ -195,18 +243,59 @@ hr {
   border-radius: 10px;
   align-items: center;
   justify-content: center;
-  background-color: gray;
+  background-color: #dbe2ef;
   margin: 15vh auto;
 }
 
-/*---CSS specific to sign_up page END---*/
+.login-label{
+  font-family: 'Volkhov', serif;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.bttn-login{
+  margin-top: 35px;
+}
+
+/*---CSS specific to sign_in page END---*/
+
+/* CSS for emp_prf start */
+
+.emp-profile {
+  width: 90vw;
+  padding: 20px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: gray;
+  border-radius: 30px;
+}
+
+#prf-img {
+  border-radius: 50%;
+}
+
+.detail {
+  display: inline-block;
+  list-style-type: none;
+  font-weight: bold;
+}
+
+/* CSS for emp_prf ends */
 
 /* CSS for footer */
 
 .footer{
-  background-color: gray;
+  background-color: #112d4e;
   padding: 10px 0;
   text-align: center;
+  color: white;
+}
+
+.footer-signin{
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
 }
 
 /* CSS for footer */
