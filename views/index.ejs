@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Home page</title>
-    <link rel="stylesheet" href="/css/style.css">
-  </head>
-  <body>
-    <h1>starting page</h1>
-  </body>
-</html>
+<%- include("partials/header") -%>
+<div class="home_text">
+  <h1>WELCOME</h1>
+  <h3>To Human Resource management </h3>
+  <h3>Web-app</h1>
+</div>
+<hr>
+<div class="feat">
+  <a href="/signup"><button class="bttn link-bttn">HR/Admin</button></a>
+  <a href="/empquery"><button class="bttn link-bttn">Employee</button></a>
+</div>
+<%- include("partials/footer") -%>

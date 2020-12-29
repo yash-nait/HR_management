@@ -46,4 +46,7 @@ app.listen(3000, function () {
   app.get("/signup",function(req,res){
     res.render("sign_up");
   });
+  app.get("/reg",function(req,res){
+    res.render("register");
+  });
 // mongoose.connection.close();

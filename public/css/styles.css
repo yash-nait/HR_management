@@ -59,6 +59,33 @@ hr {
 }
 /*BUTTONS END*/
 
+/*---CSS specific to home page---*/
+
+.home_text{
+  font-weight: bold;
+  font-size: 3vw;
+  margin: 20vh auto;
+  text-align: center;
+}
+
+.feat{
+  margin: 10vh auto;
+  text-align: center;
+}
+
+.link-bttn{
+  font-size: 2vw;
+  font-weight: bolder;
+  height: 30vh;
+  width: 35vw;
+}
+
+.link-bttn:hover{
+  background-color: white;
+}
+
+/*---CSS specific to home page END---*/
+
 /*---CSS specific to team page---*/
 
 /* CARD STYLES START */
