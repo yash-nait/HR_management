@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
-//////////////////DataBase Related Work///////////////////////////////////////
+//////////////////DataBase Related Work////////////////////////////////////
 mongoose.connect("mongodb://localhost:27017/hrDB", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -159,7 +159,7 @@ app.listen(3000, function () {
 
 
 
-  ////////////////////////POST REQ
+  ////////////////////////POST REQ///////////////////////////////
   app.post("/profile/del",function(req,res){
     Employee.deleteOne(req.body,function(err){
       if(!err){
@@ -200,7 +200,6 @@ app.listen(3000, function () {
       res.render("profile");
     })
     .post(function(req,res){
-      console.log(req);
       const newEmployee = new Employee({
         name: req.body.emp_name,
         emp_id:req.body.emp_id,

@@ -218,12 +218,10 @@ hr {
 }
 
 .db-operations-styles{
-  /* height: 300px; */
   text-align: center;
-  width: 100vw;
   background-color: #dbe2ef;
   margin: 50px 0;
-  padding: 20px;
+  padding: 20px 0; 
 }
 
 .emp_inp{
@@ -238,11 +236,10 @@ hr {
   margin: 50px 0;
 }
 .hr-req{
- display: inline-block;
- border:5px solid;
- text-align: center;
- margin: 100px;
-
+  display: inline-block;
+  border:5px solid;
+  text-align: center;
+  margin: 100px;
 }
 .hr-req:hover{
   background-color: green;
