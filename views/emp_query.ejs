@@ -3,53 +3,58 @@
   <h1>Queries</h1>
   <br>
   <a href="#leave"><button class="bttn bttn-lg q-btn">Leave Request</button></a>
-  <a href="#bonus"><button class="bttn bttn-lg q-btn">Demand Bonus</button></a>
+  <a href="#loan"><button class="bttn bttn-lg q-btn">Request Loan</button></a>
   <a href="#other"><button class="bttn bttn-lg q-btn">Others misc.</button></a>
 </div>
 <br><br>
 <div class="q-section" id="leave">
-  <form method="post" action="">
+  <form method="post" action="/empquery/leave">
     <h1>Leave Request</h1>
-    <input type="text" name="" id="" placeholder="Employee ID">
+    <input type="text" name="emp_id" id="" placeholder="Employee ID">
     <br>
     <label for="start-date">
       <h3>Starting date : </h3>
     </label>
-    <input id="start-date" type="date">
+    <input id="start-date" name="start_date" type="date">
     <label for="end-date">
       <h3>Ending date : </h3>
     </label>
-    <input id="end-date" type="date">
+    <input id="end-date" name = "end_date" type="date">
     <br><br>
-    <textarea cols="70" rows="10" placeholder="Reason for leave"></textarea>
+    <label>Enter Email : </label><br><br>
+    <input type="email" name="email" placeholder="Email"><br><br>
+    <textarea cols="70" rows="10" placeholder="Reason for leave" name = "description"></textarea>
     <br><br>
-    <button class="bttn sbmt-btn">Submit</button>
+    <button class="bttn sbmt-btn" type ="submit">Submit</button>
   </form>
 </div>
 <hr>
-<div class="q-section" id="bonus">
-  <form action="">
-    <h1>Demand Bonus</h1>
-    <input type="text" name="" id="" placeholder="Employee ID">
+<div class="q-section" id="loan">
+  <form action="/empquery/loan" method ="post">
+    <h1>Request Loan</h1>
+    <input type="text" name="emp_id" id="" placeholder="Employee ID">
     <br><br>
-    <input type="text" placeholder="Amount of loan">
+    <input type="text" name="amount" placeholder="Amount of loan">
     <br><br>
-    <textarea cols="70" rows="10" placeholder="Description"></textarea>
+    <input type="email" name="email" placeholder="Email"><br><br>
+    <textarea cols="70" rows="10" placeholder="Description" name ="description"></textarea>
     <br><br>
-    <button class="bttn sbmt-btn">Submit</button>
+    <button class="bttn sbmt-btn" type ="submit">Submit</button>
   </form>
 </div>
 <hr>
 <div class="q-section" id="other">
-  <form action="">
+  <form action="/empquery/others" method = "post">
     <h1>Others</h1>
-    <input type="text" name="" id="" placeholder="Employee ID">
+    <input type="text" name="emp_id" id="" placeholder="Employee ID">
     <br><br>
-    <input type="text" placeholder="Subject">
+    <input type="text" name="subject" placeholder="Subject">
     <br><br>
-    <textarea cols="70" rows="10" placeholder="Description"></textarea>
+    <input type="email" name="email" placeholder="Email"><br><br>
+    <textarea cols="70" rows="10" name = "description" placeholder="Description"></textarea>
     <br><br>
-    <button class="bttn sbmt-btn">Submit</button>
+
+    <button class="bttn sbmt-btn" type ="submit">Submit</button>
   </form>
 </div>
 <%- include("partials/footer") -%>

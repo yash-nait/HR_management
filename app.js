@@ -8,6 +8,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
+//////////////////DataBase Related Work///////////////////////////////////////
 mongoose.connect("mongodb://localhost:27017/hrDB", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -26,20 +27,35 @@ const employeeSchema = {
   dept: String
 };
 
+
 const Employee = mongoose.model("Employee", employeeSchema);
 
-// const newEmployee = new Employee({
-//   name: 'Shivam',
-//   emp_id:'1234',
-//   post: 'Admin',
-//   phone: '123455',
-//   email: 'abc@xyz.com',
-//   salary: '10',
-//   address:'Janakpuri',
-//   doj:'11/08/2000',
-//   dob:'11/08/1990'
-// });
+const leaveSchema = {
+  emp_id:String,
+  description:String,
+  start_date:String,
+  end_date:String,
+  email:String
+}
+const Leave = mongoose.model("Leave", leaveSchema);
 
+const loanSchema={
+  emp_id:String,
+  description:String,
+  amount:String,
+  email:String
+}
+const Loan = mongoose.model("Loan",loanSchema);
+
+const otherSchema ={
+  emp_id:String,
+  description:String,
+  subject:String,
+  email:String
+}
+const Others= mongoose.model("Others",otherSchema)
+
+////////////////////////Database Ends//////////////////////////////
 
 app.listen(3000, function () {
     console.log("Server is running on port 3000.");
@@ -49,7 +65,13 @@ app.listen(3000, function () {
     res.render("index");
   });
   app.get("/team", function (req, res) {
-    res.render("team");
+      Employee.find({},function (err,found) {
+        if(!err){
+            res.render("team",{obj:found});
+        }
+        else res.render("result2",{r : "Failure"})
+      })
+
   });
   app.get("/empquery",function(req,res){
     res.render("emp_query");
@@ -64,16 +86,80 @@ app.listen(3000, function () {
   app.get("/emp_prf/:emp_id",function(req,res){
     const id = req.params.emp_id;
 
-    Employee.findOne({emp_id: id }, function (err,obj) {
+    Employee.findOne({emp_id: id }, function (err,found) {
 
       if(err) {
         console.log("Not found");
       }
       else {
-        res.render("emp_prf",{obj});
+        res.render("emp_prf",{obj: found});
       }
     })
   });
+  app.get("/leave",function(req,res){
+    Leave.find({},function (err,found) {
+      if(!err) res.render("leave",{obj:found})
+      else res.render("result",{r:"Failure"})
+    })
+  })
+  app.get("/loan",function(req,res){
+    Loan.find({},function (err,found) {
+      if(!err) res.render("loan",{obj:found})
+      else res.render("result",{r:"Failure"})
+    })
+  })
+  app.get("/others",function(req,res){
+    Others.find({},function (err,found) {
+      if(!err) res.render("others",{obj:found})
+      else res.render("result",{r:"Failure"})
+    })
+  })
+  app.get("/delete/leave/:x",function(req,res){
+    let emp_id = req.params.x;
+    Leave.deleteOne({emp_id: emp_id},function (err) {
+      if(err) {
+        res.render("result",{r:"Failure"})
+      }
+      else{
+        Leave.find({},function (err,found) {
+          if(!err) res.render("leave",{obj:found})
+          else res.render("result",{r:"Failure"})
+        })
+      }
+    })
+  })
+  app.get("/delete/loan/:x",function(req,res){
+      let emp_id = req.params.x;
+      Loan.deleteOne({emp_id: emp_id},function (err) {
+        if(err) {
+          res.render("result",{r:"Failure"})
+        }
+        else{
+          Loan.find({},function (err,found) {
+            if(!err) res.render("loan",{obj:found})
+            else res.render("result",{r:"Failure"})
+          })
+        }
+      })
+    })
+    app.get("/delete/others/:x",function(req,res){
+        let emp_id = req.params.x;
+        Others.deleteOne({emp_id: emp_id},function (err) {
+          if(err) {
+            res.render("result",{r:"Failure"})
+          }
+          else{
+            Others.find({},function (err,found) {
+              if(!err) res.render("others",{obj:found})
+              else res.render("result",{r:"Failure"})
+            })
+          }
+        })
+      })
+
+
+
+  ////////////////////////POST REQ
   app.post("/profile/del",function(req,res){
     Employee.deleteOne(req.body,function(err){
       if(!err){
@@ -82,7 +168,32 @@ app.listen(3000, function () {
         res.render("result",{r:"FAILURE"});
       }
     })
-  })
+  });
+    app.post("/empquery/leave",function (req,res) {
+      const newLeave = new Leave(req.body)
+      newLeave.save(function (err) {
+        if(!err) res.render("result2",{r:"Success"})
+        else res.render("result2",{r:"Failed"})
+      })
+
+    })
+    app.post("/empquery/loan",function (req,res) {
+      const newLoan = new Loan(req.body)
+      newLoan.save(function (err) {
+        if(!err) res.render("result2",{r:"Success"})
+        else res.render("result2",{r:"Failed"})
+      })
+
+    })
+    app.post("/empquery/others",function (req,res) {
+      const newOthers = new Others(req.body)
+      newOthers.save(function (err) {
+        if(!err) res.render("result2",{r:"Success"})
+        else res.render("result2",{r:"Failed"})
+      })
+
+    })
+
 ///////////////////// Route req ////////////////////
   app.route('/profile')
     .get(function(req,res){
@@ -95,7 +206,7 @@ app.listen(3000, function () {
         emp_id:req.body.emp_id,
         post: req.body.emp_post,
         phone: req.body.emp_no,
-        email: req.body.emp_email,
+        email: req.body.emp_mail,
         salary: req.body.emp_sal,
         address:req.body.emp_add,
         doj:req.body.emp_doj,

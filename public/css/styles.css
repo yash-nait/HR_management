@@ -232,12 +232,21 @@ hr {
 }
 
 .request-box{
-  height: 300px;
+  text-align: center;
   width: 100vw;
   background-color: #dbe2ef;
   margin: 50px 0;
 }
+.hr-req{
+ display: inline-block;
+ border:5px solid;
+ text-align: center;
+ margin: 100px;
 
+}
+.hr-req:hover{
+  background-color: green;
+}
 /*---CSS specific to profile page END---*/
 
 /*---CSS specific to sign_in page---*/
@@ -306,3 +315,11 @@ hr {
 }
 
 /* CSS for footer */
+/*CSS For Leave PAGE*/
+.leave-request{
+  margin:20px auto;
+  background-color: #dbe2ef;
+}
+.leave-request hr{
+  margin: 5px 0;
+}

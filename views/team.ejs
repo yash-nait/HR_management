@@ -3,82 +3,25 @@
 <h1 class="page-heading">The Team</h1>
 <h5 class="page-subheading">Company Database</h5>
 
-<hr>
 
-<h2 class="headings-profile">Executive Profiles</h2>
-
-<div class="card">
-  <img src="" alt="" class="card-image">
-  <div class="credentials">
-    <h2>Shivam Bhatia</h2>
-    <h4>Post: Developer</h4>
-    <h4>Contact: +91 982221231</h4>
-    <h4>Email: shivam@email.com</h4>
-  </div>
-  <button class="bttn bttn-lg button-card">More Info</button>
-</div>
+<% obj.forEach(function (object) { %>
 
 <div class="card">
   <img src="" alt="" class="card-image">
   <div class="credentials">
-    <h2>Name</h2>
-    <h4>Post</h4>
-    <h4>Contact</h4>
-    <h4>Email</h4>
+    <h2>Name : <%= object.name %> </h2>
+    <h4>Post : <%= object.post %></h4>
+    <h4>Contact : <%= object.phone %></h4>
+    <h4>Email : <%= object.email %></h4>
   </div>
-  <button class="bttn bttn-lg button-card">More Info</button>
+  <a href="/emp_prf/<%= object.emp_id%>"><button class="bttn bttn-lg button-card">More Info</button></a>
 </div>
 
-<hr>
+<% }) %>
 
-<h2 class="headings-profile">Developer and Designer Profiles</h2>
 
-<div class="card">
-  <img src="" alt="" class="card-image">
-  <div class="credentials">
-    <h2>Shivam Bhatia</h2>
-    <h4>Post: Developer</h4>
-    <h4>Contact: +91 982221231</h4>
-    <h4>Email: shivam@email.com</h4>
-  </div>
-  <button class="bttn bttn-lg button-card">More Info</button>
-</div>
 
-<div class="card">
-  <img src="" alt="" class="card-image">
-  <div class="credentials">
-    <h2>Name</h2>
-    <h4>Post</h4>
-    <h4>Contact</h4>
-    <h4>Email</h4>
-  </div>
-  <button class="bttn bttn-lg button-card">More Info</button>
-</div>
 
-<hr>
 
-<h2 class="headings-profile">HR</h2>
-
-<div class="card">
-  <img src="" alt="" class="card-image">
-  <div class="credentials">
-    <h2>Shivam Bhatia</h2>
-    <h4>Post: Developer</h4>
-    <h4>Contact: +91 982221231</h4>
-    <h4>Email: shivam@email.com</h4>
-  </div>
-  <button class="bttn bttn-lg button-card">More Info</button>
-</div>
-
-<div class="card">
-  <img src="" alt="" class="card-image">
-  <div class="credentials">
-    <h2>Name</h2>
-    <h4>Post</h4>
-    <h4>Contact</h4>
-    <h4>Email</h4>
-  </div>
-  <button class="bttn bttn-lg button-card">More Info</button>
-</div>
 
 <%- include("partials/footer") -%>

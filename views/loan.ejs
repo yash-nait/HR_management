@@ -1,0 +1,22 @@
+<%- include("partials/header") -%>
+
+<% if(obj.length == 0) {%>
+  <div style="text-align:center;"><h3>No Request Found!!!!</h3></div>
+  <% } %>
+
+
+
+<% obj.forEach(function(element){ %>
+  <div class="leave-request">
+    <h3>Employee ID : <%= element.emp_id %></h3>
+    <h3>Amount : <%= element.amount %></h3>
+    <p>Description : <%= element.description %></p><hr>
+    <a href="mailto:<%= element.email %>?subject=Reply to Leave Request"><button name="button" class = "bttn ">Reply</button></a>
+    <a href="/delete/loan/<%=element.emp_id%>"><button name="delBtn" class = "bttn" >Delete</button></a>
+  </div>
+
+<% })%>
+
+</div>
+</body>
+</html>
