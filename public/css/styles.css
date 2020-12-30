@@ -218,10 +218,17 @@ hr {
 }
 
 .db-operations-styles{
-  height: 300px;
+  /* height: 300px; */
+  text-align: center;
   width: 100vw;
   background-color: #dbe2ef;
   margin: 50px 0;
+  padding: 20px;
+}
+
+.emp_inp{
+  display:inline-block;
+  margin: 40px;
 }
 
 .request-box{
