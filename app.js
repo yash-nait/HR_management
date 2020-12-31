@@ -3,11 +3,13 @@ const _ = require("lodash");
 const bodyParser = require("body-parser");
 const express = require("express");
 const app = express();
+var encrypt = require('mongoose-encryption');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
+let isLoggedIn = false
 //////////////////DataBase Related Work////////////////////////////////////
 mongoose.connect("mongodb://localhost:27017/hrDB", {
   useNewUrlParser: true,
@@ -55,6 +57,19 @@ const otherSchema ={
 }
 const Others= mongoose.model("Others",otherSchema)
 
+var adminSchema = new mongoose.Schema({
+  name: String,
+  id : String,
+  password : String
+
+});
+
+const secret = "asdfghjkljijkkalskals"
+
+adminSchema.plugin(encrypt, {secret:secret,encryptedFields:["password"]})
+
+const Admin = mongoose.model("Admin",adminSchema)
+
 ////////////////////////Database Ends//////////////////////////////
 
 app.listen(3000, function () {
@@ -77,7 +92,7 @@ app.listen(3000, function () {
     res.render("emp_query");
   });
   app.get("/signin",function(req,res){
-    res.render("sign_in");
+    res.render("sign_in",{auth:"True"});
   });
   app.get("/reg",function(req,res){
     res.render("register");
@@ -157,6 +172,14 @@ app.listen(3000, function () {
         })
       })
 
+      app.get("/register",function(req,res) {
+        res.render("register")
+      })
+
+      app.get("/logout",function(req,res) {
+        isLoggedIn = false
+        res.render("index")
+      })
 
 
   ////////////////////////POST REQ///////////////////////////////
@@ -194,10 +217,40 @@ app.listen(3000, function () {
 
     })
 
+    app.post("/admin/sign_in",function(req,res) {
+      console.log(req.body);
+      Admin.findOne({id:req.body.id},function(err,found) {
+        if(!err) {
+          if(found.password === req.body.password) {
+            isLoggedIn = true
+            
+            res.render("profile",{found})
+          }
+          else {
+            res.render("sign_in",{auth:"False"})
+          }
+        }
+        else {
+          console.log("No match found");
+        }
+      })
+
+    })
+    app.post("/admin/register",function(req,res) {
+      const newAdmin = new Admin(req.body)
+      newAdmin.save()
+      res.render("sign_in",{auth:"True"})
+    })
+
 ///////////////////// Route req ////////////////////
   app.route('/profile')
     .get(function(req,res){
-      res.render("profile");
+      if(isLoggedIn === true) {
+        res.render("profile");
+      }
+      else {
+        res.render("sign_in")
+      }
     })
     .post(function(req,res){
       const newEmployee = new Employee({

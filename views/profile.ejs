@@ -1,9 +1,11 @@
 <%- include("partials/header") -%>
 <div class="profile-bar">
   <ul>
+    <a href="/logout">
     <button class="bttn log-out-bttn">Log Out</button>
-    <li>Name : xyz</li> <br><br>
-    <li>Employee ID : 1234</li><br>
+  </a>
+    <li>Name : <%=found.name %></li> <br><br>
+    <li>Employee ID : <%= found.id %> </li><br>
     <!-- <li>Designation : developer</li><br><br> -->
   </ul>
 </div>
