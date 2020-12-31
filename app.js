@@ -9,7 +9,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
-let isLoggedIn = false
+let isLoggedIn = {
+  id: null,
+  check: false
+}
 //////////////////DataBase Related Work////////////////////////////////////
 mongoose.connect("mongodb://localhost:27017/hrDB", {
   useNewUrlParser: true,
@@ -92,7 +95,7 @@ app.listen(3000, function () {
     res.render("emp_query");
   });
   app.get("/signin",function(req,res){
-    res.render("sign_in",{auth:"True"});
+    res.render("sign_in",{auth:isLoggedIn.check});
   });
   app.get("/reg",function(req,res){
     res.render("register");
@@ -177,7 +180,7 @@ app.listen(3000, function () {
       })
 
       app.get("/logout",function(req,res) {
-        isLoggedIn = false
+        isLoggedIn.check = false
         res.render("index")
       })
 
@@ -222,12 +225,13 @@ app.listen(3000, function () {
       Admin.findOne({id:req.body.id},function(err,found) {
         if(!err) {
           if(found.password === req.body.password) {
-            isLoggedIn = true
+            isLoggedIn.check = true;
+            isLoggedIn.id = req.body.id;
             
             res.render("profile",{found})
           }
           else {
-            res.render("sign_in",{auth:"False"})
+            res.render("sign_in",{auth:isLoggedIn.check})
           }
         }
         else {
@@ -239,17 +243,19 @@ app.listen(3000, function () {
     app.post("/admin/register",function(req,res) {
       const newAdmin = new Admin(req.body)
       newAdmin.save()
-      res.render("sign_in",{auth:"True"})
+      res.render("sign_in",{auth:isLoggedIn.check})
     })
 
 ///////////////////// Route req ////////////////////
   app.route('/profile')
     .get(function(req,res){
-      if(isLoggedIn === true) {
-        res.render("profile");
+      if(isLoggedIn.check === true) {
+        Admin.findOne({id:isLoggedIn.id},function(err,found){
+          res.render("profile", {found});
+        });
       }
       else {
-        res.render("sign_in")
+        res.render("sign_in", {auth:isLoggedIn.check})
       }
     })
     .post(function(req,res){

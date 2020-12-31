@@ -2,12 +2,13 @@
 
 <h1 class="page-heading">The Team</h1>
 <h5 class="page-subheading">Company Database</h5>
+<hr>
 
 
 <% obj.forEach(function (object) { %>
 
 <div class="card">
-  <img src="" alt="" class="card-image">
+  <img src="/img/<%= Math.floor((Math.random()*5)+1) %>.png" alt="" class="card-image">
   <div class="credentials">
     <h2>Name : <%= object.name %> </h2>
     <h4>Post : <%= object.post %></h4>
@@ -18,10 +19,5 @@
 </div>
 
 <% }) %>
-
-
-
-
-
 
 <%- include("partials/footer") -%>

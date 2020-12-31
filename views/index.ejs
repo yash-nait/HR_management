@@ -6,9 +6,17 @@
 </div>
 <hr>
 <div class="feat">
-  <a href="/signin"><button class="bttn link-bttn" title="Login as admin">HR/Admin</button></a>
-  <a href="/empquery"><button class="bttn link-bttn" title="For any employee queries">Employee</button></a>
-  <br>
-  <a href="/team"><button class="bttn link-bttn" title="To see the employee database">Team</button></a>
+  <div class="link-div">
+    <a href="/signin"><button class="bttn link-bttn left-bttn" title="Login as admin" style="display: inline-block;">HR/Admin</button></a>
+    <h1 class="link-detail link-left">Sign in as HR or Admin</h1>
+  </div>
+  <div class="link-div div-centre" style="background-color: #dbe2ef;">
+    <h1 class="link-detail link-right">For any employee queries or requests</h1>
+    <a href="/empquery"><button class="bttn link-bttn right-bttn" title="For any employee queries">Employee</button></a>
+  </div>
+  <div class="link-div">
+    <a href="/team"><button class="bttn link-bttn left-bttn" title="To see the employee database">Team</button></a>
+    <h1 class="link-detail link-left">To meet the team</h1>
+  </div>
 </div>
 <%- include("partials/footer") -%>

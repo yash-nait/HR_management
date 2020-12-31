@@ -3,11 +3,11 @@ body {
   font-family: sans-serif;
   overflow-x: hidden;
   background-color: #f9f7f7;
-  font-family: 'Overpass Mono', monospace;;
+  font-family: 'Rubik', sans-serif;
 }
 
 hr {
-  margin: 40px 50px 0;
+  margin: 40px 3vw 0;
   color: #bbbbbb;
 }
 
@@ -87,7 +87,38 @@ hr {
   font-weight: 600;
   height: 30vh;
   width: 35vw;
-  font-family: 'Overpass Mono', monospace;
+  font-family: 'Rubik', sans-serif;
+  display: inline-block;
+}
+
+.left-bttn{
+  margin-right: 10%;
+}
+
+.link-left{
+  margin-left: 7%;
+}
+
+.right-bttn{
+  margin-left: 10%;
+}
+
+/* .link-right{
+  margin-right: 10%;
+} */
+
+
+.link-detail{
+  display: inline-block;
+}
+
+.link-div{
+  margin:  75px 0;
+}
+
+.div-centre{
+  margin: 0 3vw;
+  padding: 50px 0;
 }
 
 /*---CSS specific to home page END---*/
@@ -161,13 +192,24 @@ hr {
 }
 
 .q-section {
-  background-color: blue;
+  background-color: #dbe2ef;
   padding: 10px;
   margin: 10px;
 }
 
+.query-hr{
+  margin-bottom: 40px;
+}
+
+.q-heading{
+  font-size: 50px;
+}
+
 .q-btn {
   padding: 10px 20px;
+  width: 150px;
+  height: 75px;
+  font-size: 20px;
 }
 
 .sbmt-btn {
@@ -319,4 +361,39 @@ hr {
 }
 .leave-request hr{
   margin: 5px 0;
+}
+
+@media (max-width: 1200px){
+  body{
+    text-align: center;
+  }
+  .left-bttn{
+    margin-right: 0;
+  }
+  
+  .link-left{
+    margin-left: 0;
+  }
+  
+  .right-bttn{
+    margin-left: 0;
+  }
+  
+  /* .link-right{
+    margin-right: 10%;
+  } */
+  
+  
+  .link-detail{
+    display: inline-block;
+  }
+  
+  .link-div{
+    margin:  0;
+  }
+  
+  .div-centre{
+    margin: 0;
+    padding: 50px 0;
+  }
 }

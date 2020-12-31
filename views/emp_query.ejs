@@ -1,6 +1,6 @@
 <%- include("partials/header") -%>
 <div class="top">
-  <h1>Queries</h1>
+  <h1 class="q-heading">Queries</h1>
   <br>
   <a href="#leave"><button class="bttn bttn-lg q-btn">Leave Request</button></a>
   <a href="#loan"><button class="bttn bttn-lg q-btn">Request Loan</button></a>
@@ -20,15 +20,16 @@
       <h3>Ending date : </h3>
     </label>
     <input id="end-date" name = "end_date" type="date">
-    <br><br>
-    <label>Enter Email : </label><br><br>
+    <label>
+      <h3>Enter Email : </h3>
+    </label>
     <input type="email" name="email" placeholder="Email"><br><br>
     <textarea cols="70" rows="10" placeholder="Reason for leave" name = "description"></textarea>
     <br><br>
     <button class="bttn sbmt-btn" type ="submit">Submit</button>
   </form>
 </div>
-<hr>
+<hr class="query-hr">
 <div class="q-section" id="loan">
   <form action="/empquery/loan" method ="post">
     <h1>Request Loan</h1>
@@ -42,7 +43,7 @@
     <button class="bttn sbmt-btn" type ="submit">Submit</button>
   </form>
 </div>
-<hr>
+<hr class="query-hr">
 <div class="q-section" id="other">
   <form action="/empquery/others" method = "post">
     <h1>Others</h1>

@@ -1,18 +1,18 @@
 <%- include("partials/header") -%>
-    <div class="sign-up">
+    <div class="sign-in">
       <form action="/admin/register" method="post">
-        <label for="id">Employee ID</label>
+        <label for="id" class="login-label">Employee ID</label>
         <br><br>
         <input type="text" name="id" value="">
         <br><br>
-        <label for="name">Name</label>
+        <label for="name" class="login-label">Name</label>
         <br><br>
         <input type="text" name="name" value="">
         <br><br><br>
-        <label for="password">Password</label>
+        <label for="password" class="login-label">Password</label>
         <br><br>
         <input type="password" name="password" value="">
-        <br><br><br>
+        <hr><br><br>
         <button  class="bttn bttn-lg" type="submit" >LOG IN</button>
       </form>
     </div>
