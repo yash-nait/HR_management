@@ -32,12 +32,19 @@
 <hr class="query-hr">
 <div class="q-section" id="loan">
   <form action="/empquery/loan" method ="post">
-    <h1>Request Loan</h1>
+    <h1>Loan Request</h1>
     <input type="text" name="emp_id" id="" placeholder="Employee ID">
-    <br><br>
+    <label for="amount">
+      <h3>Amount : </h3>
+    </label>
     <input type="text" name="amount" placeholder="Amount of loan">
-    <br><br>
-    <input type="email" name="email" placeholder="Email"><br><br>
+    <label for="email">
+      <h3>Email : </h3>
+    </label>
+    <input type="email" name="email" placeholder="Email">
+    <label for="description">
+      <h3>Description : </h3>
+    </label>
     <textarea cols="70" rows="10" placeholder="Description" name ="description"></textarea>
     <br><br>
     <button class="bttn sbmt-btn" type ="submit">Submit</button>
@@ -48,11 +55,18 @@
   <form action="/empquery/others" method = "post">
     <h1>Others</h1>
     <input type="text" name="emp_id" id="" placeholder="Employee ID">
-    <br><br>
+    <label for="subject">
+      <h3>Subject : </h3>
+    </label>
     <input type="text" name="subject" placeholder="Subject">
-    <br><br>
-    <input type="email" name="email" placeholder="Email"><br><br>
-    <textarea cols="70" rows="10" name = "description" placeholder="Description"></textarea>
+    <label for="email">
+      <h3>Email : </h3>
+    </label>
+    <input type="email" name="email" placeholder="Email">
+    <label for="description">
+      <h3>Description : </h3>
+    </label>
+    <textarea cols="70" rows="10" name = "description" placeholder="description"></textarea>
     <br><br>
 
     <button class="bttn sbmt-btn" type ="submit">Submit</button>
