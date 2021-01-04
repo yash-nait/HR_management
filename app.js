@@ -4,6 +4,9 @@ const bodyParser = require("body-parser");
 const express = require("express");
 const app = express();
 var encrypt = require('mongoose-encryption');
+const dotenv = require("dotenv")
+
+dotenv.config()
 
 app.use(bodyParser.urlencoded({
   extended: true
@@ -16,7 +19,7 @@ let isLoggedIn = {
   check: false
 }
 //////////////////DataBase Related Work////////////////////////////////////
-mongoose.connect("mongodb://localhost:27017/hrDB", {
+mongoose.connect(`mongodb+srv://admin:${process.env.PASSWORD}@hr-management.pn0gp.mongodb.net/hrDB?retryWrites=true&w=majority`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -69,7 +72,7 @@ var adminSchema = new mongoose.Schema({
 
 });
 
-const secret = "asdfghjkljijkkalskals"
+const secret = process.env.ENCRYPT;
 
 adminSchema.plugin(encrypt, {
   secret: secret,
@@ -90,12 +93,10 @@ app.get("/", function(req, res) {
 app.get("/team", function(req, res) {
   Employee.find({}, function(err, found) {
     if (!err) {
-      res.render("team", {
-        obj: found
-      });
-    } else res.render("result2", {
-      r: "Failure"
-    })
+      res.render("team", { obj: found });
+    } else{
+      res.render("result2", { r: "Failure" })
+    }
   })
 
 });
@@ -103,25 +104,18 @@ app.get("/empquery", function(req, res) {
   res.render("emp_query");
 });
 app.get("/signin", function(req, res) {
-  console.log(isLoggedIn);
   if (isLoggedIn.check === true) {
     Admin.findOne({
       id: isLoggedIn.id
     }, function(err, found) {
       if (!err) {
-        res.render("profile", {
-          found
-        })
+        res.render("profile", { found });
       } else {
-        res.render("result2", {
-          r: "Failure"
-        })
+        res.render("result2", { r: "Failure" });
       }
     })
   } else {
-    res.render("sign_in", {
-      auth: true
-    });
+    res.render("sign_in", { auth: true });
   }
 });
 app.get("/reg", function(req, res) {
@@ -135,12 +129,8 @@ app.get("/emp_prf/:emp_id", function(req, res) {
     emp_id: id
   }, function(err, found) {
 
-    if (err) {
-      console.log("Not found");
-    } else {
-      res.render("emp_prf", {
-        obj: found
-      });
+    if (!err) {
+      res.render("emp_prf", { obj: found });
     }
   })
 });
@@ -148,49 +138,44 @@ app.get("/leave", function(req, res) {
 
   if (isLoggedIn.check === true) {
     Leave.find({}, function(err, found) {
-      if (!err) res.render("leave", {
-        obj: found
-      })
-      else res.render("result", {
-        r: "Failure"
-      })
+      if (!err){
+        res.render("leave", { obj: found })
+      }
+      else {
+        res.render("result", { r: "Failure" })
+      }
     })
-  } else {
-    res.render("sign_in", {
-      auth: true
-    });
+  } 
+  else {
+    res.render("sign_in", { auth: true });
   }
 })
 app.get("/loan", function(req, res) {
   if (isLoggedIn.check === true) {
     Loan.find({}, function(err, found) {
-      if (!err) res.render("loan", {
-        obj: found
-      })
-      else res.render("result", {
-        r: "Failure"
-      })
+      if (!err){
+        res.render("loan", { obj: found })
+      }
+      else {
+        res.render("result", { r: "Failure" });
+      }
     })
   } else {
-    res.render("sign_in", {
-      auth: true
-    });
+    res.render("sign_in", { auth: true });
   }
 })
 app.get("/others", function(req, res) {
   if (isLoggedIn.check === true) {
     Others.find({}, function(err, found) {
-      if (!err) res.render("others", {
-        obj: found
-      })
-      else res.render("result", {
-        r: "Failure"
-      })
+      if (!err){
+        res.render("others", { obj: found });
+      }
+      else{
+        res.render("result", { r: "Failure" })
+      }
     })
   } else {
-    res.render("sign_in", {
-      auth: true
-    });
+    res.render("sign_in", { auth: true });
   }
 })
 app.get("/delete/leave/:x", function(req, res) {
@@ -199,17 +184,15 @@ app.get("/delete/leave/:x", function(req, res) {
     emp_id: emp_id
   }, function(err) {
     if (err) {
-      res.render("result", {
-        r: "Failure"
-      })
+      res.render("result", { r: "Failure" });
     } else {
       Leave.find({}, function(err, found) {
-        if (!err) res.render("leave", {
-          obj: found
-        })
-        else res.render("result", {
-          r: "Failure"
-        })
+        if (!err) {
+          res.render("leave", { obj: found });
+        }
+        else{
+          res.render("result", { r: "Failure" });
+        }
       })
     }
   })
@@ -220,17 +203,16 @@ app.get("/delete/loan/:x", function(req, res) {
     emp_id: emp_id
   }, function(err) {
     if (err) {
-      res.render("result", {
-        r: "Failure"
-      })
-    } else {
+      res.render("result", { r: "Failure" });
+    } 
+    else {
       Loan.find({}, function(err, found) {
-        if (!err) res.render("loan", {
-          obj: found
-        })
-        else res.render("result", {
-          r: "Failure"
-        })
+        if (!err){
+          res.render("loan", { obj: found });
+        }
+        else{
+          res.render("result", { r: "Failure" });
+        }
       })
     }
   })
@@ -241,17 +223,15 @@ app.get("/delete/others/:x", function(req, res) {
     emp_id: emp_id
   }, function(err) {
     if (err) {
-      res.render("result", {
-        r: "Failure"
-      })
+      res.render("result", { r: "Failure" })
     } else {
       Others.find({}, function(err, found) {
-        if (!err) res.render("others", {
-          obj: found
-        })
-        else res.render("result", {
-          r: "Failure"
-        })
+        if(!err){ 
+          res.render("others", { obj: found })
+        }
+        else{
+          res.render("result", { r: "Failure" })
+        }
       })
     }
   })
@@ -271,80 +251,70 @@ app.get("/logout", function(req, res) {
 app.post("/profile/del", function(req, res) {
   Employee.deleteOne(req.body, function(err) {
     if (!err) {
-      res.render("result", {
-        r: "SUCCSES"
-      });
-    } else {
-      res.render("result", {
-        r: "FAILURE"
-      });
+      res.render("result", { r: "SUCCESS" });
+    } 
+    else {
+      res.render("result", { r: "FAILURE" });
     }
   })
 });
 app.post("/empquery/leave", function(req, res) {
   const newLeave = new Leave(req.body)
   newLeave.save(function(err) {
-    if (!err) res.render("result2", {
-      r: "Success"
-    })
-    else res.render("result2", {
-      r: "Failed"
-    })
+    if (!err){
+      res.render("result2", { r: "Success" })
+    } 
+    else{
+      res.render("result2", { r: "Failed" })
+    }
   })
 
 })
 app.post("/empquery/loan", function(req, res) {
   const newLoan = new Loan(req.body)
   newLoan.save(function(err) {
-    if (!err) res.render("result2", {
-      r: "Success"
-    })
-    else res.render("result2", {
-      r: "Failed"
-    })
+    if (!err){
+      res.render("result2", { r: "Success" })
+    }
+    else {
+      res.render("result2", { r: "Failed" })
+    }
   })
 
 })
 app.post("/empquery/others", function(req, res) {
   const newOthers = new Others(req.body)
   newOthers.save(function(err) {
-    if (!err) res.render("result2", {
-      r: "Success"
-    })
-    else res.render("result2", {
-      r: "Failed"
-    })
+    if (!err){
+      res.render("result2", { r: "Success" })
+    }
+    else{
+      res.render("result2", {r: "Failed"})
+    }
   })
 
 })
 
 app.post("/admin/sign_in", function(req, res) {
-  console.log(req.body);
   Admin.findOne({
     id: req.body.id
   }, function(err, found) {
 
     if (!err) {
       if (found == null) {
-        res.render("sign_in", {
-          auth: false
-        })
-      } else {
+        res.render("sign_in", { auth: false })
+      } 
+      else {
         if (found.password === req.body.password) {
           isLoggedIn.check = true;
           isLoggedIn.id = req.body.id;
 
-          res.render("profile", {
-            found
-          })
-        } else {
-          res.render("sign_in", {
-            auth: false
-          })
+          res.render("profile", { found })
+        }
+        else {
+          res.render("sign_in", { auth: false })
         }
       }
-    } else {
-      console.log("No match found");
     }
   })
 
@@ -352,9 +322,7 @@ app.post("/admin/sign_in", function(req, res) {
 app.post("/admin/register", function(req, res) {
   const newAdmin = new Admin(req.body)
   newAdmin.save()
-  res.render("sign_in", {
-    auth: true
-  })
+  res.render("sign_in", { auth: true })
 })
 
 ///////////////////// Route req ////////////////////
@@ -364,14 +332,10 @@ app.route('/profile')
       Admin.findOne({
         id: isLoggedIn.id
       }, function(err, found) {
-        res.render("profile", {
-          found
-        });
+        res.render("profile", { found });
       });
     } else {
-      res.render("sign_in", {
-        auth: isLoggedIn.check
-      })
+      res.render("sign_in", { auth: false })
     }
   })
   .post(function(req, res) {
@@ -389,13 +353,9 @@ app.route('/profile')
     });
     newEmployee.save(function(err) {
       if (!err) {
-        res.render("result", {
-          r: "SUCCSES"
-        });
+        res.render("result", { r: "SUCCESS" });
       } else {
-        res.render("result", {
-          r: "FAILURE"
-        });
+        res.render("result", { r: "FAILURE" });
       }
     })
   });

@@ -322,16 +322,18 @@ hr {
 
 .emp-profile {
   width: 90vw;
-  padding: 20px;
+  padding: 40px;
   margin: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  background-color: gray;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  background-color: #dbe2ef;
   border-radius: 30px;
+  border: 5px solid black;
 }
 
 #prf-img {
   border-radius: 50%;
+  border: 5px solid black;
 }
 
 .detail {
