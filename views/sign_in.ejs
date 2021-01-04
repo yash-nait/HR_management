@@ -2,7 +2,7 @@
 
   <% if(auth == false) { %>
       <div>
-        <h1 class ="green-box">Please try again!</h1>
+        <h1 id="green-box">Please try again!</h1>
       </div>
   <% } %>
     <div class="sign-in">
@@ -17,7 +17,7 @@
         <hr>
         <button  class="bttn bttn-login" type="submit" >LOG IN</button>
         <br>
-        <a href="/register"><p>If not registerd. Click Here!</p></a>
+        <a href="/register" class="not-registered"><p>If not registered, Click Here!</p></a>
       </form>
     </div>
   </div>
@@ -27,5 +27,11 @@
       <h3>Made by team HFS</h3>
     </div>
   </footer>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById("green-box").style.display = "none";
+    }, 2000);
+  </script>
 
   </html>
