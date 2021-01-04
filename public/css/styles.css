@@ -3,6 +3,7 @@ body {
   overflow-x: hidden;
   background-color: #f9f7f7;
   font-family: 'Rubik', sans-serif;
+  overflow-y: scroll;
 }
 
 hr {
@@ -316,6 +317,11 @@ hr {
   margin-top: 35px;
 }
 
+.not-registered{
+  text-decoration: none;
+  color: black;
+}
+
 /*---CSS specific to sign_in page END---*/
 
 /* CSS for emp_prf start */
@@ -339,12 +345,39 @@ hr {
 .detail {
   display: inline-block;
   list-style-type: none;
+  /* font-weight: bold; */
+}
+
+.emp-detail{
+  font-size: 20px;
+  margin: 20px 0;
+}
+
+.emp-name{
   font-weight: bold;
+  margin-bottom: 0;
+  font-size: 48px;
+}
+
+.emp-post{
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.back-button{
+  text-align: center;
+  margin: 17px 0;
+}
+
+.bttn-back{
+  font-size: 22px;
+  width: 175px;
+  height: 70px;
 }
 
 /* CSS for emp_prf ends */
 /* CSS for Success/Failure*/
-.green-box{
+#green-box{
   padding:10px;
   width:99vw;
   background-color:#fb9db5;
@@ -370,8 +403,9 @@ hr {
 /* CSS for footer */
 /*CSS For Leave PAGE*/
 .leave-request{
-  margin:20px auto;
+  margin:20px 50px;
   background-color: #dbe2ef;
+  padding: 10px 20px;
 }
 .leave-request hr{
   margin: 5px 0;
@@ -427,14 +461,14 @@ input{
 }
 
 input:focus, textarea:focus{
-  border: 2px solid blue;
+  border: 2px solid rgb(110, 110, 255);
+}
+
+input:required:invalid {
+  box-shadow: none;
 }
 
 textarea::placeholder{
   font-family: sans-serif;
   font-size: 14px;
-}
-
-.req-links{
-  /* width: ; */
 }

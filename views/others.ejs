@@ -8,13 +8,19 @@
   <div class="leave-request">
     <h3>Employee ID : <%= element.emp_id %></h3>
     <h3>Subject : <%= element.subject %></h3>
-    <p>Description : <%= element.description %></p><hr>
-    <a href="mailto:<%= element.email %>?subject=Reply to Leave Request"><button name="button" class = "bttn ">Reply</button></a>
+    <p>Description : <%= element.description %></p>
+    <a href="mailto:<%= element.email %>?subject=Reply to Leave Request"><button name="button" class = "bttn" style="margin-left: 0;">Reply</button></a>
     <a href="/delete/others/<%=element.emp_id%>"><button name="delBtn" class = "bttn" >Delete</button></a>
   </div>
 
 <% })%>
 
+</div>
+
+<div class="back-button">
+  <a href="/profile">
+      <button class="bttn bttn-lg bttn-back">Back to Profile</button>
+  </a>
 </div>
 </body>
 </html>

@@ -11,24 +11,21 @@
     >
 
     <ul class="detail">
-        <li>Name : <%= obj.name %> </li>
-        <br><br>
-        <li>Employee ID : <%= obj.emp_id %>  </li>
-        <br><br>
-        <li>Designation : <%= obj.post %> </li>
-        <br><br>
-        <li>Salary : <%= obj.salary %> </li>
-        <br><br>
-        <li>Date of join : <%= obj.doj %> </li>
-        <br><br>
-        <li>Date of birth : <%= obj.dob %> </li>
-        <br><br>
-        <li>Phone Number : <%= obj.phone %> </li>
-        <br><br>
-        <li>Email : <%= obj.email %> </li>
-        <br><br>
-        <li>Address : <%= obj.address %> </li>
+        <li class="emp-name"><%= obj.name %></li>
+        <li class="emp-post"><%= obj.post %> </li>
+        <li class="emp-detail">Employee ID : <%= obj.emp_id %>  </li>
+        <li class="emp-detail">Date of join : <%= obj.doj %> </li>
+        <li class="emp-detail">Date of birth : <%= obj.dob %> </li>
+        <li class="emp-detail">Contact : <%= obj.phone %> </li>
+        <li class="emp-detail">Email : <%= obj.email %> </li>
+        <li class="emp-detail">Address : <%= obj.address %> </li>
     </ul>
+</div>
+
+<div class="back-button">
+    <a href="/team">
+        <button class="bttn bttn-lg bttn-back">Back to Team</button>
+    </a>
 </div>
 
 <%- include("partials/footer") -%>
