@@ -1,17 +1,17 @@
 <%- include("partials/header") -%>
     <div class="sign-in">
       <form action="/admin/register" method="post">
-        <label for="id" class="login-label">Admin ID</label>
+        <label for="id" class="login-label" required>Admin ID</label>
         <br><br>
-        <input type="text" name="id" value="">
+        <input type="text" name="id" required>
         <br><br>
-        <label for="name" class="login-label">Name</label>
+        <label for="name" class="login-label" required>Name</label>
         <br><br>
-        <input type="text" name="name" value="">
+        <input type="text" name="name" required>
         <br><br><br>
         <label for="password" class="login-label">Password</label>
         <br><br>
-        <input type="password" name="password" value="">
+        <input type="password" name="password" required>
         <hr><br><br>
         <button  class="bttn bttn-lg" type="submit" >REGISTER</button>
       </form>

@@ -17,30 +17,30 @@
   </div>
   <div class="db-operations-styles" id="add">
     <h3>Add an employee</h3>
-    <form class="" action="/profile" method="post">
+    <form  action="/profile" method="post">
       <div class="emp_inp">
         <label for="emp_name">Name:</label><br>
-        <input type="text" name="emp_name"><br />
+        <input type="text" name="emp_name" required ><br />
         <label for="emp_id">ID:</label><br />
-        <input type="text" name="emp_id"><br />
+        <input type="text" name="emp_id" required><br />
         <label for="emp_mail">Email:</label><br />
-        <input type="email" name="emp_mail"><br />
+        <input type="email" name="emp_mail" required><br />
         <label for="emp_post">Post:</label><br />
-        <input type="text" name="emp_post"><br />
+        <input type="text" name="emp_post" required><br />
         <label for="emp_dept">Department:</label><br />
-        <input type="text" name="emp_dept"><br />
+        <input type="text" name="emp_dept" required><br />
       </div>
       <div class="emp_inp">
         <label for="emp_add">Address:</label><br />
-        <input type="text" name="emp_add"><br />
+        <input type="text" name="emp_add" required><br />
         <label for="emp_no">Phone Number:</label><br />
-        <input type="text" name="emp_no"><br />
+        <input type="text" name="emp_no" required><br />
         <label for="emp_sal">Salary:</label><br />
-        <input type="text" name="emp_sal"><br />
+        <input type="text" name="emp_sal" required><br />
         <label for="emp_dob">DOB:</label><br />
-        <input type="date" name="emp_dob"><br />
+        <input type="date" name="emp_dob" required><br />
         <label for="emp_doj">DOJ:</label><br />
-        <input type="date" name="emp_doj"><br />
+        <input type="date" name="emp_doj" required><br />
       </div>
       <br>
       <button type="submit" class="bttn">SUBMIT</button>
@@ -51,7 +51,7 @@
     <form class="" action="/profile/del" method="post" name="del">
       <div class="emp_inp">
         <label for="emp_id">ID:</label><br />
-        <input type="text" name="emp_id"><br />
+        <input type="text" name="emp_id" required><br />
       </div>
       <br>
       <button type="submit" class="bttn">DELETE</button>

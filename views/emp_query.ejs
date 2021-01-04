@@ -10,24 +10,24 @@
 <div class="q-section" id="leave">
   <form method="post" action="/empquery/leave">
     <h1>Leave Request</h1>
-    <input type="text" name="emp_id" id="" placeholder="Employee ID">
+    <input type="text" name="emp_id" id="" placeholder="Employee ID" required>
     <br>
     <label for="start-date">
       <h3>Starting date : </h3>
     </label>
-    <input id="start-date" name="start_date" type="date">
+    <input id="start-date" name="start_date" type="date" required>
     <label for="end-date">
       <h3>Ending date : </h3>
     </label>
-    <input id="end-date" name = "end_date" type="date">
+    <input id="end-date" name = "end_date" type="date" required>
     <label>
       <h3>Email : </h3>
     </label>
-    <input type="email" name="email" placeholder="Email">
+    <input type="email" name="email" placeholder="Email" required>
     <label>
       <h3>Reason for leave : </h3>
     </label>
-    <textarea cols="50" rows="5" placeholder="Reason for leave" name = "description"></textarea>
+    <textarea cols="50" rows="5" placeholder="Reason for leave" name = "description" required></textarea>
     <br><br>
     <button class="bttn sbmt-btn" type ="submit">Submit</button>
   </form>
@@ -36,19 +36,19 @@
 <div class="q-section" id="loan">
   <form action="/empquery/loan" method ="post">
     <h1>Loan Request</h1>
-    <input type="text" name="emp_id" id="" placeholder="Employee ID">
+    <input type="text" name="emp_id" id="" placeholder="Employee ID" required>
     <label for="amount">
       <h3>Amount : </h3>
     </label>
-    <input type="text" name="amount" placeholder="Amount of loan">
+    <input type="text" name="amount" placeholder="Amount of loan" required>
     <label for="email">
       <h3>Email : </h3>
     </label>
-    <input type="email" name="email" placeholder="Email">
+    <input type="email" name="email" placeholder="Email" required>
     <label for="description">
       <h3>Description : </h3>
     </label>
-    <textarea cols="50" rows="5" placeholder="Description" name ="description"></textarea>
+    <textarea cols="50" rows="5" placeholder="Description" name ="description" required></textarea>
     <br><br>
     <button class="bttn sbmt-btn" type ="submit">Submit</button>
   </form>
@@ -57,19 +57,19 @@
 <div class="q-section" id="other">
   <form action="/empquery/others" method = "post">
     <h1>Others</h1>
-    <input type="text" name="emp_id" id="" placeholder="Employee ID">
+    <input type="text" name="emp_id" id="" placeholder="Employee ID" required>
     <label for="subject">
       <h3>Subject : </h3>
     </label>
-    <input type="text" name="subject" placeholder="Subject">
+    <input type="text" name="subject" placeholder="Subject" required>
     <label for="email">
       <h3>Email : </h3>
     </label>
-    <input type="email" name="email" placeholder="Email">
+    <input type="email" name="email" placeholder="Email" required>
     <label for="description">
       <h3>Description : </h3>
     </label>
-    <textarea cols="50" rows="5" name = "description" placeholder="Description"></textarea>
+    <textarea cols="50" rows="5" name = "description" placeholder="Description" required></textarea>
     <br><br>
 
     <button class="bttn sbmt-btn" type ="submit">Submit</button>
