@@ -346,6 +346,7 @@ hr {
 /* CSS for Success/Failure*/
 .green-box{
   padding:10px;
+  width:99vw;
   background-color:#fb9db5;
   font-size: 1.25rem;
 }
