@@ -343,7 +343,12 @@ hr {
 }
 
 /* CSS for emp_prf ends */
-
+/* CSS for Success/Failure*/
+.green-box{
+  padding:10px;
+  background-color:#fb9db5;
+  font-size: 1.25rem;
+}
 /* CSS for footer */
 
 .footer{
