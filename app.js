@@ -26,7 +26,7 @@ mongoose.connect(`mongodb+srv://admin:${process.env.PASSWORD}@hr-management.pn0g
 
 const employeeSchema = {
   name: String,
-  emp_id: String,
+  emp_id: {type:String,unique:true},
   post: String,
   phone: String,
   email: String,
@@ -67,7 +67,7 @@ const Others = mongoose.model("Others", otherSchema)
 
 var adminSchema = new mongoose.Schema({
   name: String,
-  id: String,
+  id: {type:String,unique:true},
   password: String
 
 });
@@ -321,8 +321,14 @@ app.post("/admin/sign_in", function(req, res) {
 })
 app.post("/admin/register", function(req, res) {
   const newAdmin = new Admin(req.body)
-  newAdmin.save()
-  res.render("sign_in", { auth: true })
+  newAdmin.save(function(err) {
+    if(!err) {
+      res.render("sign_in", { auth: true })
+    }
+    else {
+      res.render("result2", { r: "FAILURE!! ID ALREADY EXISTS" });
+    }
+  })
 })
 
 ///////////////////// Route req ////////////////////
@@ -355,7 +361,7 @@ app.route('/profile')
       if (!err) {
         res.render("result", { r: "SUCCESS" });
       } else {
-        res.render("result", { r: "FAILURE" });
+        res.render("result", { r: "FAILURE!! ID ALREADY EXISTS" });
       }
     })
   });
