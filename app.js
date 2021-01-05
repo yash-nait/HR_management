@@ -130,7 +130,7 @@ app.get("/emp_prf/:emp_id", function(req, res) {
   }, function(err, found) {
 
     if (!err) {
-      res.render("emp_prf", { obj: found });
+      res.render("emp_prf", { obj: found, isLoggedIn: isLoggedIn.check });
     }
   })
 });
